@@ -21,11 +21,11 @@
   "dependencies": {
     "@dankolz/mongodb-data-service": "^1.0.10",
     "@webhandle/initialize-webhandle-component": "^1.0.1",
-    "@webhandle/users-data": "github:EmergentIdeas/webhandle-users-data",
+    "@webhandle/users-data": "^1.0.0",
     "filter-log": "^1.0.13"
-  }
-  , "files": [
-	"README.md"
-	, "*.mjs"
+  },
+  "files": [
+    "README.md",
+    "*.mjs"
   ]
 }
