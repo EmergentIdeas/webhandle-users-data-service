@@ -1,0 +1,27 @@
+{
+  "name": "@webhandle/users-data-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "initialize-webhandle-component.js",
+  "scripts": {
+    "test": "bash test/all.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmergentIdeas/webhandle-users-data-service.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/EmergentIdeas/webhandle-users-data-service/issues"
+  },
+  "homepage": "https://github.com/EmergentIdeas/webhandle-users-data-service#readme",
+  "dependencies": {
+    "@dankolz/mongodb-data-service": "^1.0.10",
+    "@webhandle/initialize-webhandle-component": "^1.0.1",
+    "@webhandle/users-data": "github:EmergentIdeas/webhandle-users-data",
+    "filter-log": "^1.0.13"
+  }
+}

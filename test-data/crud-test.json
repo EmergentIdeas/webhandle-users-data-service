@@ -1,0 +1,22 @@
+{
+	"dbs": [
+		{
+			"type": "mongodb",
+			"dbName": "authtest",
+			"url": "mongodb://localhost:27017/",
+			"collectionNames": [
+				"first",
+				"second",
+				"third"
+			]
+		}
+	],
+	"@webhandle/session-cookie": {
+		"identity": {
+			"publicKeyBase64": "M8-uCcMw8iNT7T2AvcwtFffCoeiSmTQsNBL1d3TuTM4",
+			"privateKeyPKCS8Base64": "MC4CAQAwBQYDK2VwBCIEIMHSdyG-gmmmuNjjMkBIWmZQem0b8T6decb-xrkMhiR0",
+			"symmetricKeyBase64": "hbSuFl_rbuGA_nqFqnljCTE7NWwC_tNJXsefYD90-EU",
+			"nickname": "VN-2tp1sYFDJ8IkTa6wt1mqbQppvnjq2ap1zsJ_mYBQ"
+		}
+	}
+}
