@@ -24,4 +24,8 @@
     "@webhandle/users-data": "github:EmergentIdeas/webhandle-users-data",
     "filter-log": "^1.0.13"
   }
+  , "files": [
+	"README.md"
+	, "*.mjs"
+  ]
 }
