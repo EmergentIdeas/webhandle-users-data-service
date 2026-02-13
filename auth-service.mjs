@@ -193,7 +193,7 @@ export default class AuthService {
 				}
 			}
 			this.updatePass(user, pass)
-			await this.usersDataService.save(user, callback)
+			await this.usersDataService.save(user)
 		}
 		return user
 	}

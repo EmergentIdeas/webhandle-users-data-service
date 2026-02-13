@@ -29,6 +29,15 @@ export default async function setup(webhandle) {
 
 
 		})
+		await t.test('create user', async (t) => {
+			let authService = webhandle.services.authService
+			let name = '' + new Date().getTime()
+			let group = name + 'group'
+			await authService.createUserIfNoneExists(name, name, [group])
+			let user = await authService.findUser(name)
+			assert.equal(user.name, name, 'Names should match')
+			assert(user.groups.includes(group), 'User should be in group.')
+		})
 		await t.test('crud tests', async (t) => {
 			let pr = new Promise(async (resolve, reject) => {
 				let authService = webhandle.services.authService
