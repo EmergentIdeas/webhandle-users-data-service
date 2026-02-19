@@ -6,7 +6,7 @@ export default function setupReqResObjects(webhandle, manager) {
 		res.createUserSession = function (userName, callback) {
 			let token = {
 				name: userName,
-				expires: new Date(new Date().getTime() + (config.sessionLength))
+				expires: new Date(new Date().getTime() + (manager.config.sessionLength))
 			}
 			let session = manager.sessionFinder(req)
 			session.userToken = token
