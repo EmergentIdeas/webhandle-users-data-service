@@ -73,11 +73,13 @@ export default class AuthService {
 
 	/**
 	 * Attempts to log in a user with name `name` and pass `pass`. If successful, a user is returned.
-	 * All other conditions result in an error on callback or a rejection of the promise.
+	 * All other conditions result in an error on callback. Promises work a little differently. Rejecting
+	 * a promises causes an uncaught exception which crashes the server unless handled, so instead of rejecting
+	 * it just resolves to undefined.
 	 * @param {string} name 
 	 * @param {string} pass 
 	 * @param {function} [callback] With signature (err, user)
-	 * @returns A promise which has the same resolve behavior as the callback.
+	 * @returns A promise which resolves to the user or undefined if login failed.
 	 */
 	login(name, pass, callback /* (err, user) */) {
 		let p = new Promise(async (resolve, reject) => {
@@ -106,10 +108,10 @@ export default class AuthService {
 				let e = new Error('Login failed')
 				e.user = user
 
-				reject(e)
 				if (callback) {
 					callback(e)
 				}
+				resolve()
 				return
 			}
 			catch (e) {
