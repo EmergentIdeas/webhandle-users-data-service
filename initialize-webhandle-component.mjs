@@ -31,6 +31,8 @@ initializeWebhandleComponent.setup = async function (webhandle, config) {
 	manager.log = log
 	manager.config = config
 
+	setupReqResObjects(webhandle, manager)
+
 	let databaseConfig
 	if(config.databaseName) {
 		databaseConfig = webhandle.dbs[config.databaseName]
@@ -38,22 +40,26 @@ initializeWebhandleComponent.setup = async function (webhandle, config) {
 	if(!databaseConfig) {
 		databaseConfig = webhandle.primaryDatabase
 	}
-	let database = databaseConfig.db
-	
 
-	setupReqResObjects(webhandle, manager)
-	setupDataServices(webhandle, manager, database)
-	
-	let authServiceOptions = {
-		iterations: config.iterations
-		, salt: config.salt 
-		, algorithm: config.algorithm 
-		, usersDataService: manager.services.usersDataService
-		, groupsDataService: manager.services.groupsDataService
-		, maxFailures: config.maxFailures
+	if(databaseConfig) {
+		let database = databaseConfig.db
+
+		setupDataServices(webhandle, manager, database)
+		
+		let authServiceOptions = {
+			iterations: config.iterations
+			, salt: config.salt 
+			, algorithm: config.algorithm 
+			, usersDataService: manager.services.usersDataService
+			, groupsDataService: manager.services.groupsDataService
+			, maxFailures: config.maxFailures
+		}
+		let authService = new AuthService(authServiceOptions)
+		manager.services.authService = webhandle.services.authService = authService
 	}
-	let authService = new AuthService(authServiceOptions)
-	manager.services.authService = webhandle.services.authService = authService
+	else {
+		log.error("No database is available. Skipping setup of user and group services.")
+	}
 
 
 	return manager
